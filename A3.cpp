@@ -1,26 +1,23 @@
 #include <iostream>
 using namespace std;
 
-void func1( int x)
-{
-    cout << "Address of Parameter is " << &x << endl; // tham so - tham tri
-}
+int count_even( int *, int );
 
-void func2( int &x )
-{
-    cout << "Address of Parameter is " << &x << endl; // tham so - tham bien
-}
 int main()
 {
-    int x =5;
-    cout << "Address of Argument is " << &x << endl; // doi so
-    func1(x);
-    func2(x);
+    int n = 10;
+    int A[n];
+    for (int i =0; i<n; i++) cin >> A[i];
+    cout << count_even(A,n);
     return 0;
-
 }
- /**
- đối số và tham trị là hai biến có địa chỉ khác nhau vì tham trị là bản sao
- của đối số, thay đổi ko làm ảnh hưởng đến đối số
- đối số và tham biến có cùng 1 địa chỉ vì chúng là một biến với tên gọi khác nhau,
- & giúp hàm chiếu tới địa chỉ của đối số
+
+int count_even( int *A, int n )
+{
+    int even = 0;
+    for (int i =0; i<n; i++)
+    {
+        if (*(A+i) % 2 == 0) even++;
+    }
+    return even;
+}
